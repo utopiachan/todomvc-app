@@ -62,9 +62,6 @@ export class TodoListComponent implements OnInit {
     this.todoService.clearCompletedTodos();
   }
 
-  //translate(todo: Todo): void {
-   // todo.content = this.targetLanguage
- // }
 
   translate(todo: Todo) {
     
@@ -74,14 +71,8 @@ export class TodoListComponent implements OnInit {
         "target": this.targetLanguage
       }
     ).subscribe((res: any) => {
-      console.log(res.data.translations[0].translatedText)
-    }, err => {
-      alert(console.log(err));
-   //   this.testing = err
-     // alert(this.testing)
-    }
-    )
-    
+      todo.content=(res.data.translations[0].translatedText)
+    })
   }
   
   
