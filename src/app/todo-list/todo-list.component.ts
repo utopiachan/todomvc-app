@@ -12,6 +12,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 export class TodoListComponent implements OnInit {
   targetLanguage: string = '';
+  testing: string='';
   constructor(
 
     public readonly todoService: TodoService,
@@ -67,14 +68,18 @@ export class TodoListComponent implements OnInit {
 
   translate(todo: Todo) {
     todo.content = this.targetLanguage;
+
     this.http.post("https://translation.googleapis.com/language/translate/v2?key=" + this.targetLanguage,
       {
         "q": [todo.content],
         "target": this.targetLanguage
       }
     ).subscribe((response: any) => {
-      todo.content = response.data.translations[0].translatedText
-    })
+      this.testing = response.data.translations[0].translatedText
+     
+    }
+    )
+    alert(this.testing)
   }
   
   
