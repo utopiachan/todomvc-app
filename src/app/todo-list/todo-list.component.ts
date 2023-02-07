@@ -67,19 +67,21 @@ export class TodoListComponent implements OnInit {
  // }
 
   translate(todo: Todo) {
-    todo.content = this.targetLanguage;
-
-    this.http.post("https://translation.googleapis.com/language/translate/v2?key=" + this.targetLanguage,
+    
+    this.http.post("https://translation.googleapis.com/language/translate/v2?key=" + 'AIzaSyCIvSyryQ7dU8DUBA2lF0-8jAdZdL_uEdM',
       {
         "q": [todo.content],
         "target": this.targetLanguage
       }
-    ).subscribe((response: any) => {
-      this.testing = response.data.translations[0].translatedText
-     
+    ).subscribe((res: any) => {
+      console.log(res.data.translations[0].translatedText)
+    }, err => {
+      alert(console.log(err));
+   //   this.testing = err
+     // alert(this.testing)
     }
     )
-    alert(this.testing)
+    
   }
   
   
