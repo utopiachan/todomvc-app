@@ -14,17 +14,19 @@ export class LoginComponent {
   password: string = "";
   show: boolean = false;
   title = 'todomvc-app'
+  redirect() {
+    this.router.navigate(['todo']);
+  }
   submit() {
     console.log("user name is " + this.username)
     console.log("password is " + this.password)
     this.clear();
+    this.redirect();
   }
   clear() {
     this.username = "";
     this.password = "";
     this.show = true;
   }
-  redirect() {
-    this.router.navigate(['todo']);
-  }
+
 }

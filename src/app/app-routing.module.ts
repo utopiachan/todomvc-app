@@ -11,9 +11,6 @@ const routes: Routes = [
       { path: ':status', component: TodoListComponent }
     ] },
   { path: 'login', component: LoginComponent },
- // { path: '', component: TodoListComponent },
- // { path: ':status', component: TodoListComponent },
-
 ];
 
 @NgModule({
