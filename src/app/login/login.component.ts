@@ -4,11 +4,11 @@ import { Router } from '@angular/router'
 * @title login demo
 */
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'login-root',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class AppComponent {
+export class LoginComponent {
   constructor(private router: Router) { }
   username: string = "";
   password: string = "";
@@ -16,7 +16,7 @@ export class AppComponent {
   title = 'todomvc-app'
   submit() {
     console.log("user name is " + this.username)
-    console.log("password is "+ this.password)
+    console.log("password is " + this.password)
     this.clear();
   }
   clear() {

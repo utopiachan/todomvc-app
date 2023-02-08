@@ -1,23 +1,7 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Template • TodoMVC</title>
-<!--  <link rel="stylesheet" href="node_modules/todomvc-common/base.css">-->
-<!--  <link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">-->
-  <!-- CSS overrides - remove if you don't need it -->
-<!--  <link rel="stylesheet" href="css/app.css">-->
-</head>
-<body>
-  <section class="todoapp">
-    <app-header></app-header>
-    <!-- This section should be hidden by default and shown when there are todos -->
-    <router-outlet></router-outlet>
-  </section>
-<app-footer></app-footer>
-<!-- Scripts here. Don't remove ↓ -->
-<!--<script src="node_modules/todomvc-common/base.js"></script>-->
-<!--<script src="js/app.js"></script>-->
-</body>
-</html>
+
+<ul>
+  <li><a routerLink="/todo" routerLinkActive="active" ariaCurrentWhenActive="page">todo</a></li>
+  <li><a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">login</a></li>
+  <router-outlet></router-outlet>
+</ul>
+
