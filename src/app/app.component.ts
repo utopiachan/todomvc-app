@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router'
 import { AuthService } from './service/auth.service';
+import { ReloadComponent } from './service/reload-component';
 /**
 * @title login demo
 */
@@ -9,20 +10,31 @@ import { AuthService } from './service/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  constructor(private router: Router,) { }
+export class AppComponent extends ReloadComponent {
+  constructor(public override router: Router,
+  ) {
+    super(router);
+    console.log("Inside AppComponent Constructor");
+}
   username: string = "";
   password: string = "";
   show: boolean = false;
   title = 'todomvc-app'
 
   isUserLoggedIn = false;
+  isAdmin = false;
 
-  ngOnInit() {
+  override ngOnInit() {
     let storeData = localStorage.getItem("isUserLoggedIn");
     console.log("StoreData: " + storeData);
     if (storeData != null && storeData == "true") {
       this.isUserLoggedIn = true;
+    }
+
+    let checkAdmin = localStorage.getItem("isAdmin");
+    console.log("isAdmin: " + checkAdmin);
+    if (checkAdmin != null && checkAdmin == "true") {
+      this.isAdmin = true;
     }
   }
 
@@ -39,5 +51,9 @@ export class AppComponent {
 
   redirect() {
     this.router.navigate(['todo']);
+  }
+
+  reloadCurrent() {
+    this.reloadPage();
   }
 }

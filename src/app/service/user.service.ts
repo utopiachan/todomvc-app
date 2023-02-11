@@ -25,9 +25,5 @@ export class UserService {
     });
   }
 
-  addTranslate(user:string|any): void {
- 
-  }
-
 }
 

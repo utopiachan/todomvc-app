@@ -3,11 +3,15 @@
   <li><a routerLink="/todo" routerLinkActive="active" ariaCurrentWhenActive="page">todo</a></li>
   <li><a routerLink="/register" routerLinkActive="active" ariaCurrentWhenActive="page">Register</a></li>
   <li class="nav-item">
-    <div *ngIf="isUserLoggedIn">
-      <a class="nav-link" routerLink="/logout">Logout</a>
+    <div *ngIf="isUserLoggedIn; else isLogOut">
+      <a class="nav-link" (click)="reloadCurrent()" routerLink="/logout">Logout</a>
     </div>
- <a class="nav-link" routerLink="/login">Login</a>
- 
+    <div *ngIf="isAdmin">
+      <a class="nav-link"  routerLink="/logout">Users Usage</a>
+    </div>
+    <ng-template #isLogOut>
+      <a class="nav-link" routerLink="/login">Login</a>
+    </ng-template>
   </li>
   <router-outlet></router-outlet>
 

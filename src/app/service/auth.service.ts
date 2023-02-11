@@ -27,7 +27,11 @@ export class AuthService {
     if (checking !== undefined) {
       this.isUserLoggedIn = true
       localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false");
-      localStorage.setItem('getUserName', userName); 
+      localStorage.setItem('getUserName', userName);
+      if (userName == "admin") {
+        console.log("he is admin");
+        localStorage.setItem('isAdmin', "true" );
+      }
     }
   
     return of(this.isUserLoggedIn).pipe(
@@ -41,6 +45,8 @@ export class AuthService {
   logout(): void {
     this.isUserLoggedIn = false;
     localStorage.removeItem('isUserLoggedIn');
+    localStorage.removeItem('getUserName');
+    localStorage.removeItem('isAdmin');
   }
 
 
