@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoService } from '../todo.service';
-import { Todo } from '../todo.model';
+import { TodoService } from '../service/todo.service';
+import { Todo } from '../models/todo.model';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { UserService } from '../service/user.service';
+import { User } from '../models/user.model';
+
 
 @Component({
   selector: 'app-todo-list',
@@ -12,23 +15,22 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 export class TodoListComponent implements OnInit {
   targetLanguage: string = '';
-  testing: string='';
-  constructor(
 
+  constructor(
     public readonly todoService: TodoService,
     private readonly route: ActivatedRoute,
+    public readonly userService: UserService,
     public http: HttpClient
-    
-  ) {
-    this.route.paramMap
-      .subscribe(params => {
-        this.status = (params.get('status') as 'active' | 'completed') ?? '';
-      });
-  }
+  ) { }
 
-  status: '' | 'active' | 'completed' = '';
+  users: User[] = [];
+  username = localStorage.getItem('getUserName');
 
   ngOnInit(): void {
+  
+  }
+  getFilter() {
+    return this.todoService.todoList.filter((it => it.user_name === this.username)); 
   }
 
   deleteTodo(todo: Todo): void {
@@ -64,7 +66,12 @@ export class TodoListComponent implements OnInit {
 
 
   translate(todo: Todo) {
-    
+    this.users = this.userService.userList
+    let checking = this.users.find(x => x.username === this.username);
+    if (checking != undefined) {
+      checking.number_translate++;
+      console.log("translated:" + checking.number_translate)
+    };
     this.http.post("https://translation.googleapis.com/language/translate/v2?key=" + 'AIzaSyCIvSyryQ7dU8DUBA2lF0-8jAdZdL_uEdM',
       {
         "q": [todo.content],
@@ -73,7 +80,8 @@ export class TodoListComponent implements OnInit {
     ).subscribe((res: any) => {
       todo.content=(res.data.translations[0].translatedText)
     })
+    
   }
   
-  
+ 
 }

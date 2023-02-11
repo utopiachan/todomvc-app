@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -8,6 +9,11 @@ import { Component } from '@angular/core';
 })
 export class TodoComponent {
   title = 'todomvc-app';
+  constructor(private refresh: AppComponent,) { }
+
+  ngOnInit() {
+    this.refresh.ngOnInit();
+  }
 
 }
 

@@ -2,14 +2,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Template • TodoMVC</title>
-
+  <title>TodoMVC</title>
 </head>
+
 <body>
   <section class="todoapp">
+
     <app-header></app-header>
     <!-- This section should be hidden by default and shown when there are todos -->
-    <router-outlet></router-outlet>
+    <router-outlet name="todo_outlet"></router-outlet>
   </section>
   <app-footer></app-footer>
   <!-- Scripts here. Don't remove ↓ -->
