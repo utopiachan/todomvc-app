@@ -15,7 +15,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 
 export class TodoListComponent implements OnInit {
+  //para: targetLanguage: storing language user wants
+  //username:storing the username for filtering specific entries
   targetLanguage: string = '';
+  registerForm: FormGroup | any;
+  users: User[] = [];
+  username = localStorage.getItem('getUserName');
 
   constructor(
     public readonly todoService: TodoService,
@@ -24,21 +29,18 @@ export class TodoListComponent implements OnInit {
     private formBuilder: FormBuilder
   ) { }
 
-  registerForm: FormGroup | any;
-  users: User[] = [];
-  username = localStorage.getItem('getUserName');
-
   ngOnInit(): void {
     this.todoService.getTodo()
   }
+  //getFilter():filtering todos of the current user
   getFilter() {
     return this.todoService.todoList.filter((it => it.user_name === this.username)); 
   }
-
+  
   deleteTodo(todo: Todo): void {
     this.todoService.deleteTodo(todo);
   }
-
+  //allow of editing todo with double click
   stopEditing(todo: Todo, content: string): void {
     if (todo.editing) {
       if (content.trim().length > 0) {
@@ -67,7 +69,7 @@ export class TodoListComponent implements OnInit {
     this.todoService.clearCompletedTodos();
   }
 
-
+  //translate():send todo content to google translate api and return the translated result to user
   translate(todo: Todo) {
     this.users = this.userService.userList;
     var number_times :any =0;

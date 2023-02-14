@@ -6,7 +6,7 @@ import { AuthService } from './service/auth.service';
   providedIn: 'root'
 })
 export class TodoGuard implements CanActivate {
-
+  
   constructor(private authService: AuthService, private router: Router) { }
 
   canActivate(
@@ -15,8 +15,8 @@ export class TodoGuard implements CanActivate {
     let url: string = state.url;
     return this.checkLogin(url);
   }
-
-
+  
+  //guarding todo page that can only be accessed by logged-in user.
   checkLogin(url: string): true | UrlTree {
     console.log("Url: " + url)
     let val: string|any = localStorage.getItem('isUserLoggedIn');

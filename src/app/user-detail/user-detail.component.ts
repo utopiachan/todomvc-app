@@ -8,9 +8,12 @@ import { UserService } from '../service/user.service';
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent {
+  //para：#userList:storing userlist for detail display.
+  //dataSource:storing userList for use as a table.
   #userList: User[] = [];
   displayedColumns: string[] = ['User Id', 'User Name', 'Translate times'];
   dataSource = this.#userList;
+
   constructor(
     public readonly userService: UserService,
   ) { }

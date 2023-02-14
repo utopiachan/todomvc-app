@@ -18,7 +18,7 @@ export class AdminGuard implements CanActivate {
     return this.checkLogin(url);
   }
 
-
+  //checkLogin():guard user detail page can only be accessed from admin.
   checkLogin(url: string): true | UrlTree {
     console.log("Url: " + url)
     let val: string | any = localStorage.getItem('isAdmin');

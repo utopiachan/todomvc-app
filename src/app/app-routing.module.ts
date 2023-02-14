@@ -10,7 +10,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
-  {
+  {//directing users to different component of web-app
     path: 'todo', component: TodoComponent, canActivate: [TodoGuard], children:
       [
        { path: '', component: TodoListComponent, outlet: 'todo_outlet' },

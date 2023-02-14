@@ -17,15 +17,16 @@ export class AppComponent extends ReloadComponent {
   ) {
     super(router);
     console.log("Inside AppComponent Constructor");
-}
+  }
+
   username: string = "";
   password: string = "";
   show: boolean = false;
   title = 'todomvc-app'
-  #userList: User[] = [];
   isUserLoggedIn = false;
   isAdmin = false;
 
+  //ngOnInit():check if the current use is admin or is logged in to display different button link 
   override ngOnInit() {
     let storeData = localStorage.getItem("isUserLoggedIn");
     console.log("StoreData: " + storeData);

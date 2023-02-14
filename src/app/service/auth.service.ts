@@ -14,7 +14,7 @@ export class AuthService {
   constructor(
     public readonly userService: UserService,
   ) { }
-
+  //para: users:storing userlist for login comparison. isUserLoggedin: athenticate if loggin success.
   users: User[] =[];
   isUserLoggedIn: boolean = false;
 
@@ -41,12 +41,10 @@ export class AuthService {
       })
     );
   }
-
+  //logout() clear local storage and tell the service the user is logged out.
   logout(): void {
     this.isUserLoggedIn = false;
-    localStorage.removeItem('isUserLoggedIn');
-    localStorage.removeItem('getUserName');
-    localStorage.removeItem('isAdmin');
+    localStorage.clear();
   }
 
 

@@ -18,13 +18,16 @@ export class RegisterComponent {
     private readonly userservice: UserService,
     private formBuilder: FormBuilder
   ) { }
+  //para:users:store userlist and compare with user input to check if the username is taken
+  //username & password: storing user input
+  //registerForm:gathering detail of user and send to database
   users: User[] = [];
   username: string = "";
   password: string = "";
-  show: boolean = false;
   title = 'Registration'
   registerForm: FormGroup | any;
 
+  //ngOnInit():prepare register form formate for database use
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       user_id: [''],
@@ -37,7 +40,7 @@ export class RegisterComponent {
   redirect() {
     this.router.navigate(['todo']);
   }
-
+  //register():compare user name with existing database,if username is available then send registration from to database.
   register(): void {
     this.users = this.userservice.userList
     let checking = this.users.find(x => x.username === this.username);
@@ -53,6 +56,7 @@ export class RegisterComponent {
           number_translate: 0,
         });
         console.log('success');
+        alert("Register Success");
         this.redirect();
 
         this.registerForm.value.user_id = this.userservice.userList.length;

@@ -21,12 +21,13 @@
                (change)="toggleComplete(toggleOne.checked, todo)">
         <label (dblclick)="todo.editing=true">{{ todo.content }}</label>
         <button class="destroy" (click)="deleteTodo(todo)"></button>
+        <!--translate button for five language-->
         <select class="form-control" (change)="translate(todo)" [(ngModel)]="targetLanguage">
           <option value="en">English</option>
           <option value="bn">Bengali</option>
           <option value="hi">Hindi</option>
           <option value="ja">Japanese</option>
-          <option value="zh">Chinese</option>
+          <option value="zh-TW">Chinese</option>
         </select>
       </div>
       <input *ngIf="todo.editing"

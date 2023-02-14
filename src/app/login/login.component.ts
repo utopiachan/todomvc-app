@@ -11,8 +11,7 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent implements OnInit {
-
-
+//para: userName & password: storing input from client formData:formcontrol for use to quickly signin as admin
   userName!: string;
   password!: string;
   formData: FormGroup|any;
@@ -25,7 +24,7 @@ export class LoginComponent implements OnInit {
       password: new FormControl("admin"),
     });
   }
-
+  //submit the input data from client to authenicate if service is available for user.
   onClickSubmit(data: any) {
     this.userName = data.userName;
     this.password = data.password;

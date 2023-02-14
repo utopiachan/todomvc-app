@@ -10,7 +10,9 @@ import { ReplaySubject } from 'rxjs';
 })
 
 export class TodoService {
-
+  //para: allCompleted: mark all todos to complete status. #todolist:store todo data for local use
+  //username: store the current user to show the todos inputed by user.
+  //registerForm: register the todo information for database communication
   allCompleted = false;
   uncompletedCount = 0;
   #todoList: Todo[] = [];
@@ -26,15 +28,7 @@ export class TodoService {
       private formBuilder: FormBuilder
   ) { }
 
-  addTodo(todo: Omit<Todo, 'id'>): void {
-    this.#todoList.push({
-      id: this.#todoList.length+1,
-      ...todo
-    });
-    this.allCompleted = false;
-    this.uncompletedCount++;
-  }
-
+  //deleteTodo():delete todo locally from todolist and send delete request to database
   deleteTodo(todo: Todo): void {
     var todoID = todo.id;
     this.#todoList = this.#todoList.filter(it => it.id !== todo.id);
@@ -42,10 +36,8 @@ export class TodoService {
     this.uncompletedCount = this.#todoList.filter(it => !it.completed).length;
     this.deleteTodoData(todoID);
   }
-
+  //toggleTodo():check the todo and update it's status
   toggleTodo(completed: boolean, todo?: Todo): void {
-
-
     if (!todo) {
       this.#todoList.forEach(it => it.completed = completed);
       for (var todoAll of this.#todoList) {
@@ -65,13 +57,13 @@ export class TodoService {
         if (todo.completed == false) {
           this.updateCompleted(todoID, false);
         }
-        this.allCompleted = this.#todoList.filter(it => !it.completed).length === 1;
+        this.allCompleted = this.#todoList.filter(it => !it.completed).length === 0;
       }
     }
       this.uncompletedCount = this.#todoList.filter(it => !it.completed).length;
     
   }
-
+  //clearCompletedTodos():delete todos with completed=true
   clearCompletedTodos(): void {
     for (var todo of this.#todoList) {
       if (todo.completed == true) { this.deleteTodoData(todo.id) }
@@ -80,7 +72,7 @@ export class TodoService {
     this.allCompleted = false;
     this.uncompletedCount = this.#todoList.length;
   }
-
+  //getTodo(): retreive todoList from database
   getTodo() {
     return this.http.get<any>('http://localhost:4200/api/todo_item').subscribe(
       response => {
@@ -88,10 +80,11 @@ export class TodoService {
         this.#todoList = response;
       })
   }
+
   private _todo = new ReplaySubject<Todo>(1);
   set todo(value: Todo) { this._todo.next(value); }
   rootURL = '/api';
-
+  //deleteTodoData():delete the required todo data from database
   deleteTodoData(id: number) {
     this.registerForm = this.formBuilder.group({
       id: [''],
@@ -107,14 +100,13 @@ export class TodoService {
         console.log(response)
       })
   }
-
+  //updateCompleted():update todo.completed to database when todo is checked.
   updateCompleted(id: number,complete:boolean) {
     this.registerForm = this.formBuilder.group({
       id: [''],
       completed:[false],
     });
     this.registerForm.value.id = id;
-  
     this.registerForm.value.completed = complete;
     const headers = { 'content-type': 'application/json' };
     console.log(this.registerForm)
@@ -126,7 +118,7 @@ export class TodoService {
         console.log(response)
       })
   }
-
+  //updateContent():update the content of todo after user edited it.
   updateContent(id: number, content: string) {
     this.registerForm = this.formBuilder.group({
       id: [''],

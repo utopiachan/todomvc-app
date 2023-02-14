@@ -18,6 +18,7 @@ export class ReloadComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //for use to reload component to update data.
   reloadComponent(self: boolean, urlToNavigateTo?: string) {
     //skipLocationChange:true means dont update the url to / when navigating
     console.log("Current route I am on:", this.router.url);

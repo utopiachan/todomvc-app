@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\footer",
+    "\\src\\app\\header",
+    "\\src\\app\\login",
+    "\\src\\app\\logout",
+    "\\src\\app\\models",
+    "\\src\\app\\todo",
+    "\\src\\app\\user-detail"
+  ],
+  "SelectedNode": "\\server\\www.js",
+  "PreviewInSolutionExplorer": false
+}

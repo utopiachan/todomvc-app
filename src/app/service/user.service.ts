@@ -10,10 +10,8 @@ import { FormGroup } from '@angular/forms';
 })
 
 export class UserService {
-  allCompleted = false;
-  uncompletedCount = 0;
+ //paras: userlist: storing userdata locally in user formate
   #userList: User[] = [];
-  currentUser: User | undefined;
   rootURL = '/api';
   private _user = new ReplaySubject<User>(1);
   registerForm: FormGroup | any;
@@ -22,8 +20,7 @@ export class UserService {
   get userList(): User[] {
     return this.#userList;
   }
-  
- 
+  //getUsers():retreive user information from database
   getUsers() {
     return this.http.get<any>('http://localhost:4200/api/user').subscribe(
       response => {
@@ -36,14 +33,7 @@ export class UserService {
   constructor(
     public http: HttpClient
   ) { }
-
-  addUser(user: Omit<User, 'user_id'>): void {
-    this.#userList.push({
-      user_id: this.#userList.length,
-      ...user
-    });
-  }
-
+//registration():registration of user to database
   registration(form: FormGroup) {
     const headers = { 'content-type': 'application/json' };
     const body = form.value;
@@ -54,7 +44,7 @@ export class UserService {
       return result;
     }).catch(error => { throw error });
   }
-
+  //updateTranslate():update the number of translate count when user click translate button
   updateTranslate(form: FormGroup) {
     const headers = { 'content-type': 'application/json' };
     const body = form.value;

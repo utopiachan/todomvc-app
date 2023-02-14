@@ -21,6 +21,22 @@ button {
   -moz-osx-font-smoothing: grayscale;
 }
 
+button_1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 100%;
+  vertical-align: baseline;
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
   font: 11px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.4em;

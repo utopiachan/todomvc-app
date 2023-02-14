@@ -16,9 +16,10 @@ import {
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  //para:   rootURL:link to our api server,todoContent: storing input from user, todoForm: collect information to interact with database
+           
   rootURL = '/api';
   todoContent = '';
-  #todoList: Todo[] = [];
   todoForm: FormGroup|any;
 
   private _todo = new ReplaySubject<Todo>(1);
@@ -30,7 +31,7 @@ export class HeaderComponent implements OnInit {
     public http: HttpClient,
     private formBuilder: FormBuilder
   ) { }
-
+  //setting up the form formate for use
   ngOnInit(): void {
     this.todoForm = this.formBuilder.group({
       id: [''],
@@ -42,12 +43,12 @@ export class HeaderComponent implements OnInit {
   }
 
   
-
+  //gathering information from user, push it to local storage and database
   addTodo() {
     if (this.todoContent.trim().length > 0) {
       let username = localStorage.getItem('getUserName');
       this.todoService.todoList.push({
-        id: this.todoService.todoList.length,
+        id: this.todoService.todoList.length+1,
         user_name: username,
         content: this.todoContent,
         completed: false,
