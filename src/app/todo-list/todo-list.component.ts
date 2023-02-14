@@ -27,7 +27,8 @@ export class TodoListComponent implements OnInit {
   username = localStorage.getItem('getUserName');
 
   ngOnInit(): void {
-  
+    this.todoService.getTodo()
+
   }
   getFilter() {
     return this.todoService.todoList.filter((it => it.user_name === this.username)); 
@@ -41,6 +42,7 @@ export class TodoListComponent implements OnInit {
     if (todo.editing) {
       if (content.trim().length > 0) {
         todo.content = content;
+        this.todoService.updateContent(todo.id, content);
       } else {
         this.todoService.deleteTodo(todo);
       }

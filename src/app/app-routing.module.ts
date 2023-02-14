@@ -9,12 +9,15 @@ import { LogoutComponent } from './logout/logout.component';
 
 const routes: Routes = [
   {
-    path: 'todo', component: TodoComponent, canActivate: [TodoGuard], children: [
-      { path: '', component: TodoListComponent, outlet: 'todo_outlet' },
-    ] },
+    path: 'todo', component: TodoComponent, canActivate: [TodoGuard], children:
+      [
+       { path: '', component: TodoListComponent, outlet: 'todo_outlet' },
+      ]
+  },
   { path: 'login', component: LoginComponent, },
   { path: 'register', component: RegisterComponent },
   { path: 'logout', component: LogoutComponent },
+  { path: '', component: LoginComponent},
 
 
 ];

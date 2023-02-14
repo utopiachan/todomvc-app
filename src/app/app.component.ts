@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router'
-import { AuthService } from './service/auth.service';
+import { UserService } from './service/user.service';
 import { ReloadComponent } from './service/reload-component';
+import { User } from './models/user.model';
 /**
 * @title login demo
 */
@@ -12,6 +13,7 @@ import { ReloadComponent } from './service/reload-component';
 })
 export class AppComponent extends ReloadComponent {
   constructor(public override router: Router,
+    public readonly userService: UserService
   ) {
     super(router);
     console.log("Inside AppComponent Constructor");
@@ -20,7 +22,7 @@ export class AppComponent extends ReloadComponent {
   password: string = "";
   show: boolean = false;
   title = 'todomvc-app'
-
+  #userList: User[] = [];
   isUserLoggedIn = false;
   isAdmin = false;
 
@@ -36,6 +38,7 @@ export class AppComponent extends ReloadComponent {
     if (checkAdmin != null && checkAdmin == "true") {
       this.isAdmin = true;
     }
+    this.getUser();
   }
 
   submit() {
@@ -55,5 +58,9 @@ export class AppComponent extends ReloadComponent {
 
   reloadCurrent() {
     this.reloadPage();
+  }
+
+  getUser() {
+    this.userService.getUsers()
   }
 }

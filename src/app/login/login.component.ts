@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   password!: string;
   formData: FormGroup|any;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, ) { }
 
   ngOnInit() {
     this.formData = new FormGroup({
@@ -38,7 +39,6 @@ export class LoginComponent implements OnInit {
         if (data) {
           this.router.navigate(['/todo'])
           alert("login success!")
-
         } else {
           alert("username or password incorrect, please try again")
         };
