@@ -16,6 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ReloadComponent } from './service/reload-component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import { MatTableModule } from '@angular/material/table'  
 
 
 
@@ -32,6 +34,7 @@ import { ReloadComponent } from './service/reload-component';
     RegisterComponent,
     LogoutComponent,
     ReloadComponent,
+    UserDetailComponent,
   
   ],
 
@@ -44,6 +47,7 @@ import { ReloadComponent } from './service/reload-component';
     MatButtonModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

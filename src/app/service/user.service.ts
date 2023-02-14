@@ -54,5 +54,16 @@ export class UserService {
       return result;
     }).catch(error => { throw error });
   }
+
+  updateTranslate(form: FormGroup) {
+    const headers = { 'content-type': 'application/json' };
+    const body = form.value;
+    console.log(body);
+    const testing = JSON.stringify(body);
+    console.log('form=' + testing);
+    return this.http.post(this.rootURL + '/user/update', { user: testing }, { headers }).toPromise().then((result) => {
+      return result;
+    }).catch(error => { throw error });
+  }
 }
 

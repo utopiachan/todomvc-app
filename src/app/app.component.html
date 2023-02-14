@@ -7,7 +7,7 @@
       <a class="nav-link" (click)="reloadCurrent()" routerLink="/logout">Logout</a>
     </div>
     <div *ngIf="isAdmin">
-      <a class="nav-link" routerLink="/logout">Users Usage</a>
+      <a class="nav-link" routerLink="/detail">Users Usage</a>
     </div>
     <ng-template #isLogOut>
       <a class="nav-link" routerLink="/login">Login</a>

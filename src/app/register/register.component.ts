@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../service/user.service';
 import { Router } from '@angular/router'
 import { User } from '../models/user.model';
-import { FormGroup, FormBuilder, } from '@angular/forms';
+import { FormGroup, FormBuilder} from '@angular/forms';
 
 
 

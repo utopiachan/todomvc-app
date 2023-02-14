@@ -96,7 +96,7 @@ export class TodoService {
     this.registerForm = this.formBuilder.group({
       id: [''],
     });
-    this.registerForm.value.id = id+1;
+    this.registerForm.value.id = id;
     const headers = { 'content-type': 'application/json' };
     console.log(this.registerForm)
     const body = this.registerForm.value;
@@ -113,7 +113,8 @@ export class TodoService {
       id: [''],
       completed:[false],
     });
-    this.registerForm.value.id = id+1;
+    this.registerForm.value.id = id;
+  
     this.registerForm.value.completed = complete;
     const headers = { 'content-type': 'application/json' };
     console.log(this.registerForm)

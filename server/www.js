@@ -158,6 +158,18 @@ app.post(`${rootUrl}/todo_item/content`, (req, res) => {
   })
 });
 
+app.post(`${rootUrl}/user/update`, (req, res) => {
+  const
+    { username, number_translate } = JSON.parse(req.body.user);
+
+  ; (async () => {
+    const { rows } = await pool.query('UPDATE "user" SET number_translate = $2 WHERE username = $1', [username, number_translate])
+    res.json(rows);
+  })().catch(err => {
+    res.json(err.stack)
+  })
+});
+
 app.get('/api/status', (req, res) => {
   res.json({ info: 'Node.js, Express, and Postgres API' });
 });
