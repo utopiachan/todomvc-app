@@ -16,7 +16,7 @@ we will use nodemon and express for the backend server
 use these commands to install
 `npm install --save express`
 `npm install --save-dev nodemon`
-Run `ng serve` for a dev server. Navigate to server folder and run the code:npm run start:dev
+Navigate to server folder and run the code to open a listening server port:`npm run start:dev` 
 application is using postgres for database storage. configure your own databse detail in the .env file.
 We have two table: one is user and one is todo.
 database table structure can be found from the models file. location:rootfolder/src/app/models
