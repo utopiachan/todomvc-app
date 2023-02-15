@@ -7,10 +7,19 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Sign up your account via register button. sign in to account and it will direct you to the todolist component.Enter your todos and click on the drop down list on the todos to translate your button. User usage link will be available when signed up with user name admin.
 
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+## backend server
+we will use nodemon and express for the backend server
+use these commands to install
+npm install --save express
+npm install --save-dev nodemon
+Run `ng serve` for a dev server. Navigate to server folder and run the code:npm run start:dev
+application is using postgres for database storage. configure your own databse detail in the .env file.
+We have two table: one is user and one is todo.
+database table structure can be found from the models file.location:rootfolder/src/app/models
 
 ## Code scaffolding
 
