@@ -19,7 +19,7 @@ use these commands to install
 Navigate to server folder and run the code to open a listening server port:`npm run start:dev` 
 application is using postgres for database storage. configure your own databse detail in the .env file.
 We have two table: one is user and one is todo.
-database table structure can be found from the models file. location:rootfolder/src/app/models
+database table structure can be found from the models file. location:rootfolder/src/app/models.
 
 ## Code scaffolding
 
@@ -32,10 +32,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
 ## Further help
 
