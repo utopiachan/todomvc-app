@@ -91,7 +91,7 @@ export class TodoListComponent implements OnInit {
       this.userService.updateTranslate(this.registerForm);
     };
 
-    this.http.post("https://translation.googleapis.com/language/translate/v2?key=" + 'AIzaSyCIvSyryQ7dU8DUBA2lF0-8jAdZdL_uEdM',
+    this.http.post("https://translation.googleapis.com/language/translate/v2?key=" + 'AIzaSdZdL_uEdM',
       {
         "q": [todo.content],
         "target": this.targetLanguage
