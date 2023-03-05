@@ -18,6 +18,14 @@ export class AuthService {
   users: User[] =[];
   isUserLoggedIn: boolean = false;
 
+  setLoginStatus(login: string) {
+    localStorage.setItem('isUserLoggedIn', login);
+  }
+
+  setUserName(username: string) {
+    localStorage.setItem('getUserName', username);
+  }
+
   login(userName: string, password: string): Observable<any> {
     console.log(userName);
     console.log(password);
@@ -26,8 +34,8 @@ export class AuthService {
     console.log(checking);
     if (checking !== undefined) {
       this.isUserLoggedIn = true
-      localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false");
-      localStorage.setItem('getUserName', userName);
+      this.setLoginStatus("true");
+      this.setUserName(userName);
       if (userName == "admin") {
         console.log("he is admin");
         localStorage.setItem('isAdmin', "true" );

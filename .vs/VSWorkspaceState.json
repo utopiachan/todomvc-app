@@ -3,14 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\footer",
-    "\\src\\app\\header",
     "\\src\\app\\login",
-    "\\src\\app\\logout",
-    "\\src\\app\\models",
     "\\src\\app\\todo",
-    "\\src\\app\\user-detail"
+    "\\src\\app\\todo-list"
   ],
-  "SelectedNode": "\\server\\www.js",
+  "SelectedNode": "\\src\\app\\todo-list\\todo-list.component.ts",
   "PreviewInSolutionExplorer": false
 }

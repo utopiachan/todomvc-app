@@ -1,5 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { UserService } from '../service/user.service';
 import { TodoListComponent } from './todo-list.component';
 
 describe('TodoListComponent', () => {
@@ -8,6 +9,9 @@ describe('TodoListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        HttpClientModule
+      ],
       declarations: [ TodoListComponent ]
     })
     .compileComponents();
@@ -22,4 +26,5 @@ describe('TodoListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

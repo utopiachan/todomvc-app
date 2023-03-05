@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router'
 import { UserService } from './service/user.service';
 import { ReloadComponent } from './service/reload-component';
-import { User } from './models/user.model';
 /**
 * @title login demo
 */

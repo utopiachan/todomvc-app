@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../service/todo.service';
 import { Todo } from '../models/todo.model';
-import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserService } from '../service/user.service';
 import { User } from '../models/user.model';
@@ -91,7 +90,7 @@ export class TodoListComponent implements OnInit {
       this.userService.updateTranslate(this.registerForm);
     };
 
-    this.http.post("https://translation.googleapis.com/language/translate/v2?key=" + 'AIzaSyCIvSyryQ7dU8DUBA2lF0-8jAdZdL_uEdM',
+    this.http.post("https://translation.googleapis.com/language/translate/v2?key=" + 'AIzaSyBl3PeSB_HocgyWG7WOX7VcyYuItMyWTlc',
       {
         "q": [todo.content],
         "target": this.targetLanguage

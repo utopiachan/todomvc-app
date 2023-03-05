@@ -10,7 +10,7 @@ import { AppComponent } from '../app.component';
 })
 export class TodoComponent {
   title = 'todomvc-app';
-  constructor(private refresh: AppComponent,) { }
+  constructor(private refresh: AppComponent) { }
 
   ngOnInit() {
     this.refresh.ngOnInit();

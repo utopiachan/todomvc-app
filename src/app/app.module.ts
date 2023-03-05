@@ -17,7 +17,8 @@ import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ReloadComponent } from './service/reload-component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-import { MatTableModule } from '@angular/material/table'  
+import { MatTableModule } from '@angular/material/table';
+
 
 
 
@@ -35,7 +36,6 @@ import { MatTableModule } from '@angular/material/table'
     LogoutComponent,
     ReloadComponent,
     UserDetailComponent,
-  
   ],
 
   imports: [
@@ -47,9 +47,9 @@ import { MatTableModule } from '@angular/material/table'
     MatButtonModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatTableModule
+    MatTableModule,
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
